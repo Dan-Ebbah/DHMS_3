@@ -3,6 +3,7 @@ package server;
 import database.MontrealHashMap;
 import database.QuebecHashMap;
 import database.SherbrookeHashMap;
+import jakarta.xml.ws.Endpoint;
 
 public class Server {
     public static void main(String[] args) {
@@ -13,12 +14,10 @@ public class Server {
             SherbrookeServerImpl sherbrookeServer = new SherbrookeServerImpl(new SherbrookeHashMap());
             ServerImpl[] servers = { montrealServer, quebecServer, sherbrookeServer};
 
-//            for(ServerImpl server : servers) {
-//                Object ref = rootpoa.servant_to_reference(server);
-//                HealthCareSystem healthCareSystem = HealthCareSystemHelper.narrow(ref);
-//                NameComponent[] path = ncRef.to_name(server.getServerName() + "_Server");
-//                ncRef.rebind(path, healthCareSystem);
-//            }
+            for (ServerImpl server : servers) {
+                String url = "http://localhost:8082/server/" + server.getServerName().toLowerCase();
+                Endpoint publish = Endpoint.publish(url, server);
+            }
 
             System.out.println("All Servers are running ...");
 

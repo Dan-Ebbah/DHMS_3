@@ -1,11 +1,15 @@
 package server;
 
 import database.HashMapImpl;
+import jakarta.jws.WebService;
+import jakarta.jws.soap.SOAPBinding;
 import model.UDPServerInfo;
 import util.LoggerUtil;
 
 import java.net.SocketException;
 
+@WebService
+@SOAPBinding(style = SOAPBinding.Style.RPC)
 public class QuebecServerImpl extends ServerImpl{
     public QuebecServerImpl(HashMapImpl database) throws SocketException {
         super(database, 5051, LoggerUtil.getLogger(QuebecServerImpl.class.getName(), "Quebec"));
