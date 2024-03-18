@@ -21,7 +21,7 @@ import jakarta.xml.ws.Action;
 @XmlSeeAlso({
     ObjectFactory.class
 })
-public interface QuebecServerImpl {
+public interface QuebecServerImpl extends CommonServerImplInterface{
 
 
     /**
@@ -29,6 +29,7 @@ public interface QuebecServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/QuebecServerImpl/getServerNameRequest", output = "http://server/QuebecServerImpl/getServerNameResponse")
@@ -40,6 +41,7 @@ public interface QuebecServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/QuebecServerImpl/listAppointmentAvailabilityRequest", output = "http://server/QuebecServerImpl/listAppointmentAvailabilityResponse")
@@ -86,6 +88,7 @@ public interface QuebecServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/QuebecServerImpl/removeAppointmentRequest", output = "http://server/QuebecServerImpl/removeAppointmentResponse")
@@ -103,6 +106,7 @@ public interface QuebecServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/QuebecServerImpl/bookAppointmentRequest", output = "http://server/QuebecServerImpl/bookAppointmentResponse")
@@ -121,6 +125,7 @@ public interface QuebecServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/QuebecServerImpl/cancelAppointmentRequest", output = "http://server/QuebecServerImpl/cancelAppointmentResponse")
@@ -136,6 +141,7 @@ public interface QuebecServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/QuebecServerImpl/getAppointmentScheduleRequest", output = "http://server/QuebecServerImpl/getAppointmentScheduleResponse")
@@ -153,6 +159,7 @@ public interface QuebecServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/QuebecServerImpl/swapAppointmentRequest", output = "http://server/QuebecServerImpl/swapAppointmentResponse")
@@ -176,6 +183,7 @@ public interface QuebecServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/QuebecServerImpl/addAppointmentRequest", output = "http://server/QuebecServerImpl/addAppointmentResponse")

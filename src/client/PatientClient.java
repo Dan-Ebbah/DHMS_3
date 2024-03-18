@@ -1,6 +1,6 @@
 package client;
 
-import model.AppointmentType;
+import client.AppointmentType;
 import model.User;
 
 import java.util.Scanner;
@@ -13,8 +13,9 @@ public class PatientClient extends AdminClient {
             User user = logIn();
 
             if (hasAccess(user)) {
-
+                CommonServerImplInterface commonServerImplInterface = connectToRightServer(user);
                 Scanner scanner = new Scanner(System.in);
+                getOperation(scanner, commonServerImplInterface);
             } else {
                 System.out.println("Wrong ID entered");
             }
@@ -26,16 +27,8 @@ public class PatientClient extends AdminClient {
         return user != null && !user.isAdmin();
     }
 
-//    private static HealthCareSystem connectToRightServer(ORB orb, User user) throws org.omg.CORBA.ORBPackage.InvalidName, NotFound, CannotProceed, InvalidName {
-//        String hospitalName = user.getHospitalType().getHospitalName();
-//        String serverName = hospitalName + "_Server";
-//        Object objRef = orb.resolve_initial_references("NameService");
-//        NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
-//        HealthCareSystem healthCareSystem = HealthCareSystemHelper.narrow(ncRef.resolve_str(serverName));
-//        return healthCareSystem;
-//    }
 
-    private static void getOperation(Scanner scanner) throws Exception {
+    private static void getOperation(Scanner scanner, CommonServerImplInterface serverImplInterface) throws Exception {
         while (true) {
             System.out.println("\nPatient Operations:");
             System.out.println("\t1. Book Appointment");
@@ -53,15 +46,15 @@ public class PatientClient extends AdminClient {
                 case 1:
                     appointmentID = getAppointmentID(scanner);
                     appointmentType = selectAppointmentType(scanner);
-//                    System.out.println(managementServer.bookAppointment(patientID, appointmentType, appointmentID));
+                    System.out.println(serverImplInterface.bookAppointment(patientID, appointmentType, appointmentID));
                     break;
                 case 2:
-//                    System.out.println(managementServer.getAppointmentSchedule(patientID));
+                    System.out.println(serverImplInterface.getAppointmentSchedule(patientID));
                     break;
                 case 3:
                     appointmentID = getAppointmentID(scanner);
                     appointmentType = selectAppointmentType(scanner);
-//                    System.out.println(managementServer.cancelAppointment(patientID, appointmentID));
+                    System.out.println(serverImplInterface.cancelAppointment(patientID, appointmentID));
                     break;
                 case 4:
                     System.out.println("**** Enter Old Appointment Info ******** ");
@@ -71,7 +64,7 @@ public class PatientClient extends AdminClient {
                     System.out.println("**** Enter New Appointment Info ******** ");
                     appointmentID = getAppointmentID(scanner);
                     appointmentType = selectAppointmentType(scanner);
-//                    System.out.println(managementServer.swapAppointment(patientID, AppointmentTypeConverter.convertToString(oldAppointmentType), oldAppointment, AppointmentTypeConverter.convertToString(appointmentType), appointmentID));
+                    System.out.println(serverImplInterface.swapAppointment(patientID, oldAppointmentType.value(), oldAppointment, appointmentType.value(), appointmentID));
                     break;
                 case 5: // Exit
                     scanner.close();

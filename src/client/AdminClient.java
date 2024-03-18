@@ -1,7 +1,7 @@
 package client;
 
-import model.AppointmentType;
 import model.User;
+import server.ServerImpl;
 
 import java.util.Scanner;
 
@@ -12,8 +12,9 @@ public class AdminClient {
 
             User user = logIn();
             if (hasAccess(user)) {
-
+                CommonServerImplInterface server = connectToRightServer(user);
                 Scanner scanner = new Scanner(System.in);
+                getOperation(scanner, server);
             } else {
                 System.out.println("Wrong ID entered");
             }
@@ -23,16 +24,19 @@ public class AdminClient {
         }
     }
 
-//    private static HealthCareSystem connectToRightServer(ORB orb, User user) throws org.omg.CORBA.ORBPackage.InvalidName, NotFound, CannotProceed, InvalidName {
-//        String hospitalName = user.getHospitalType().getHospitalName();
-//        String serverName = hospitalName + "_Server";
-//        Object objRef = orb.resolve_initial_references("NameService");
-//        NamingContextExt ncRef = NamingContextExtHelper.narrow(objRef);
-//        HealthCareSystem healthCareSystem = HealthCareSystemHelper.narrow(ncRef.resolve_str(serverName));
-//        return healthCareSystem;
-//    }
+    public static CommonServerImplInterface connectToRightServer(User user) {
+        String hospitalName = user.getHospitalType().getHospitalName();
 
-    private static void getOperation(Scanner scanner) throws Exception {
+        return switch (hospitalName.toLowerCase()) {
+            case "montreal" -> new MontrealServerImplService().getMontrealServerImplPort();
+            case "sherbrooke" ->new SherbrookeServerImplService().getSherbrookeServerImplPort();
+            case "quebec" -> new QuebecServerImplService().getQuebecServerImplPort();
+            default -> null;
+        };
+    }
+
+    private static void getOperation(Scanner scanner, CommonServerImplInterface server) throws Exception {
+
         while (true) {
             System.out.println("\nAdmin Operations:");
             System.out.println("\t1. Add Appointment");
@@ -43,7 +47,7 @@ public class AdminClient {
             int choice = scanner.nextInt();
             scanner.nextLine();
 
-            AppointmentType appointmentType;
+            client.AppointmentType appointmentType;
             String appointmentID;
             switch (choice) {
                 case 1:
@@ -52,17 +56,17 @@ public class AdminClient {
 
                     System.out.print("Enter Capacity: ");
                     int capacity = scanner.nextInt();
-//                    System.out.println(managementServer.addAppointment(appointmentID, appointmentType, capacity));
+                        System.out.println(server.addAppointment(appointmentID, appointmentType, capacity));
                     break;
                 case 2:
                     appointmentID = getAppointmentID(scanner);
                     appointmentType = selectAppointmentType(scanner);
 
-//                    System.out.println(managementServer.removeAppointment(appointmentID, appointmentType));
+                    System.out.println(server.removeAppointment(appointmentID, appointmentType));
                     break;
                 case 3:
                     appointmentType = selectAppointmentType(scanner);
-//                    System.out.println(managementServer.listAppointmentAvailability(AppointmentTypeConverter.convertToString(appointmentType)));
+                    System.out.println(server.listAppointmentAvailability(appointmentType.value()));
                     break;
                 case 4: // Exit
                     scanner.close();
@@ -85,7 +89,7 @@ public class AdminClient {
         return appointmentIDAdd;
     }
 
-    static AppointmentType selectAppointmentType(Scanner scan) {
+    static client.AppointmentType selectAppointmentType(Scanner scan) {
         System.out.println("Enter Appointment Type: ");
         System.out.println("\t1. Physician");
         System.out.println("\t2. Dental");
@@ -97,11 +101,11 @@ public class AdminClient {
 
         switch (choice) {
             case 1:
-                return AppointmentType.Physician;
+                return client.AppointmentType.PHYSICIAN;
             case 2:
-                return AppointmentType.Dental;
+                return client.AppointmentType.DENTAL;
             case 3:
-                return AppointmentType.Surgeon;
+                return AppointmentType.SURGEON;
         }
         return null;
     }

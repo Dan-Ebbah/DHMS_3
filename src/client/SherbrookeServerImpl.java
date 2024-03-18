@@ -21,7 +21,7 @@ import jakarta.xml.ws.Action;
 @XmlSeeAlso({
     ObjectFactory.class
 })
-public interface SherbrookeServerImpl {
+public interface SherbrookeServerImpl extends CommonServerImplInterface{
 
 
     /**
@@ -40,6 +40,7 @@ public interface SherbrookeServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/SherbrookeServerImpl/listAppointmentAvailabilityRequest", output = "http://server/SherbrookeServerImpl/listAppointmentAvailabilityResponse")
@@ -86,6 +87,7 @@ public interface SherbrookeServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/SherbrookeServerImpl/removeAppointmentRequest", output = "http://server/SherbrookeServerImpl/removeAppointmentResponse")
@@ -103,6 +105,7 @@ public interface SherbrookeServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/SherbrookeServerImpl/bookAppointmentRequest", output = "http://server/SherbrookeServerImpl/bookAppointmentResponse")
@@ -121,6 +124,7 @@ public interface SherbrookeServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/SherbrookeServerImpl/cancelAppointmentRequest", output = "http://server/SherbrookeServerImpl/cancelAppointmentResponse")
@@ -136,6 +140,7 @@ public interface SherbrookeServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/SherbrookeServerImpl/getAppointmentScheduleRequest", output = "http://server/SherbrookeServerImpl/getAppointmentScheduleResponse")
@@ -153,6 +158,7 @@ public interface SherbrookeServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/SherbrookeServerImpl/swapAppointmentRequest", output = "http://server/SherbrookeServerImpl/swapAppointmentResponse")
@@ -176,6 +182,7 @@ public interface SherbrookeServerImpl {
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/SherbrookeServerImpl/addAppointmentRequest", output = "http://server/SherbrookeServerImpl/addAppointmentResponse")

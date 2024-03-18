@@ -29,6 +29,7 @@ public interface MontrealServerImpl extends CommonServerImplInterface{
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/MontrealServerImpl/getServerNameRequest", output = "http://server/MontrealServerImpl/getServerNameResponse")
@@ -40,6 +41,7 @@ public interface MontrealServerImpl extends CommonServerImplInterface{
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/MontrealServerImpl/listAppointmentAvailabilityRequest", output = "http://server/MontrealServerImpl/listAppointmentAvailabilityResponse")
@@ -86,6 +88,7 @@ public interface MontrealServerImpl extends CommonServerImplInterface{
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/MontrealServerImpl/removeAppointmentRequest", output = "http://server/MontrealServerImpl/removeAppointmentResponse")
@@ -103,6 +106,7 @@ public interface MontrealServerImpl extends CommonServerImplInterface{
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/MontrealServerImpl/bookAppointmentRequest", output = "http://server/MontrealServerImpl/bookAppointmentResponse")
@@ -121,6 +125,7 @@ public interface MontrealServerImpl extends CommonServerImplInterface{
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/MontrealServerImpl/cancelAppointmentRequest", output = "http://server/MontrealServerImpl/cancelAppointmentResponse")
@@ -136,6 +141,7 @@ public interface MontrealServerImpl extends CommonServerImplInterface{
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/MontrealServerImpl/getAppointmentScheduleRequest", output = "http://server/MontrealServerImpl/getAppointmentScheduleResponse")
@@ -153,6 +159,7 @@ public interface MontrealServerImpl extends CommonServerImplInterface{
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/MontrealServerImpl/swapAppointmentRequest", output = "http://server/MontrealServerImpl/swapAppointmentResponse")
@@ -176,6 +183,7 @@ public interface MontrealServerImpl extends CommonServerImplInterface{
      * @return
      *     returns java.lang.String
      */
+    @Override
     @WebMethod
     @WebResult(partName = "return")
     @Action(input = "http://server/MontrealServerImpl/addAppointmentRequest", output = "http://server/MontrealServerImpl/addAppointmentResponse")
