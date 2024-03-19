@@ -28,6 +28,11 @@ public class ServerImpl implements ServerInterface {
         createAndStartThread(portNum, getServerName());
     }
 
+    public ServerImpl(HashMapImpl database, Logger logger) {
+        _database = database;
+        this.logger = logger;
+    }
+
     public ServerImpl() {
     }
 
@@ -170,15 +175,35 @@ public class ServerImpl implements ServerInterface {
         String msg = "";
         if (!isAppointmentPresent(oldAppointmentID)) {
             msg = "Old Appointment does not seem to exist";
+            logger.info(msg);
+            return msg;
         }
+
+        if (!isAppointmentPresent(newAppointmentID)) {
+            msg = "New Appointment does not seem to exist";
+            logger.info(msg);
+            return msg;
+        }
+
+        Appointment oldAppointment = _database.findByAppointmentID(oldAppointmentID);
+
+        if (!oldAppointment.getPatientID().equalsIgnoreCase(patientID)) {
+            msg = String.format("You dont seem to have this appointment %s booked already", oldAppointmentID);
+            logger.info(msg);
+            return msg;
+        }
+
 
         HospitalType hospitalTypeInfo = extractHospitalInfo(newAppointmentID);
         if (!isBookableAndBooked(hospitalTypeInfo.getHospitalServerAddress(), newAppointmentID, patientID)) {
             msg = "Could not swap appointment";
+            logger.info(msg);
+            return msg;
         }
 
         _database.cancel(patientID, oldAppointmentID);
         msg = "Appointments were successfully swapped ";
+        logger.info(msg);
         return msg;
     }
 

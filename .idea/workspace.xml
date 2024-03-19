@@ -4,15 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dd178c69-7968-4825-9e32-36294c0da0fb" name="Changes" comment="created classes from wsimport">
-      <change afterPath="$PROJECT_DIR$/src/client/CommonServerImplInterface.java" afterDir="false" />
+    <list default="true" id="dd178c69-7968-4825-9e32-36294c0da0fb" name="Changes" comment="update to have working clients">
+      <change afterPath="$PROJECT_DIR$/src/test/java/server/ServerImplUnitTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/AdminClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/AdminClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/MontrealServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/MontrealServerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/PatientClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/PatientClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/QuebecServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/QuebecServerImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/SherbrookeServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/SherbrookeServerImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/ManagementServer.idl" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/ServerImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/ServerImpl.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,11 +21,20 @@
       <list>
         <option value="Class" />
         <option value="Interface" />
+        <option value="JUnit5 Test Class" />
       </list>
     </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JavaAutoRunManager">
+    <enabled-run-configurations>
+      <run-configuration type="JUnit" name="ServerImplUnitTest.cancelAppointment" />
+    </enabled-run-configurations>
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
   </component>
   <component name="ProjectColorInfo"><![CDATA[{
   "associatedIndex": 1
@@ -41,12 +47,23 @@
   </component>
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
-    "Application.AdminClient.executor": "Run",
-    "Application.PatientClient.executor": "Run",
-    "Application.Server.executor": "Run",
+    "Application.AdminClient.executor": "Debug",
+    "Application.PatientClient.executor": "Debug",
+    "Application.Server.executor": "Debug",
     "Application.ServerTest.executor": "Run",
+    "JUnit.ServerImplUnitTest.addAppointment.executor": "Run",
+    "JUnit.ServerImplUnitTest.addAppointment_withAppointmentAlreadyExists_shouldBeUnsuccessful.executor": "Debug",
+    "JUnit.ServerImplUnitTest.addAppointment_withAppointmentAlreadyExists_shouldBeUnsuccessfull.executor": "Run",
+    "JUnit.ServerImplUnitTest.addAppointment_withValidInputs_shouldBeSuccessful.executor": "Run",
+    "JUnit.ServerImplUnitTest.cancelAppointment.executor": "Run",
+    "JUnit.ServerImplUnitTest.removeAppointment_whenAppointmentAlreadyExists_shouldRemoveSuccessfully.executor": "Debug",
+    "JUnit.ServerImplUnitTest.removeAppointment_whenAppointmentDoesNotExists_shouldNotUnsuccessfull.executor": "Run",
+    "Maven.DHMS_3 [clean].executor": "Run",
+    "Maven.DHMS_3 [install].executor": "Run",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "git-widget-placeholder": "main",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "/Users/danieldan-ebbah/Documents/School/MACS/COMP_6231/Assignments/code/DHMS_3/DHMS_3/src/model",
@@ -62,8 +79,14 @@
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/src/model" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
     <key name="ExtractSuperBase.RECENT_KEYS">
       <recent name="client" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="server" />
     </key>
   </component>
   <component name="RunManager" selected="Application.PatientClient">
@@ -106,8 +129,7 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="ServerTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="server.ServerTest" />
+    <configuration name="ServerImplUnitTest.cancelAppointment" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
       <module name="DHMS_3" />
       <extension name="coverage">
         <pattern>
@@ -115,6 +137,26 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <option name="PACKAGE_NAME" value="server" />
+      <option name="MAIN_CLASS_NAME" value="server.ServerImplUnitTest" />
+      <option name="METHOD_NAME" value="cancelAppointment" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ServerImplUnitTest.removeAppointment_whenAppointmentDoesNotExists_shouldNotUnsuccessfull" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="DHMS_3" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="server.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="server" />
+      <option name="MAIN_CLASS_NAME" value="server.ServerImplUnitTest" />
+      <option name="METHOD_NAME" value="removeAppointment_whenAppointmentDoesNotExists_shouldNotUnsuccessfull" />
+      <option name="TEST_OBJECT" value="method" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -122,9 +164,10 @@
     <recent_temporary>
       <list>
         <item itemvalue="Application.PatientClient" />
-        <item itemvalue="Application.AdminClient" />
         <item itemvalue="Application.Server" />
-        <item itemvalue="Application.ServerTest" />
+        <item itemvalue="Application.AdminClient" />
+        <item itemvalue="JUnit.ServerImplUnitTest.cancelAppointment" />
+        <item itemvalue="JUnit.ServerImplUnitTest.removeAppointment_whenAppointmentDoesNotExists_shouldNotUnsuccessfull" />
       </list>
     </recent_temporary>
   </component>
@@ -143,7 +186,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1710730921468</updated>
-      <workItem from="1710730922650" duration="8811000" />
+      <workItem from="1710730922650" duration="18193000" />
     </task>
     <task id="LOCAL-00001" summary="create new project for assignment 3">
       <option name="closed" value="true" />
@@ -177,7 +220,15 @@
       <option name="project" value="LOCAL" />
       <updated>1710763998743</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="update to have working clients">
+      <option name="closed" value="true" />
+      <created>1710790152687</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1710790152687</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -188,22 +239,48 @@
     <MESSAGE value="upload code from previous assignment and make publish simple test service" />
     <MESSAGE value="create wsdl for each server" />
     <MESSAGE value="created classes from wsimport" />
-    <option name="LAST_COMMIT_MESSAGE" value="created classes from wsimport" />
+    <MESSAGE value="update to have working clients" />
+    <option name="LAST_COMMIT_MESSAGE" value="update to have working clients" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/client/PatientClient.java</url>
-          <line>16</line>
-          <option name="timeStamp" value="1" />
+          <url>file://$PROJECT_DIR$/src/test/java/server/ServerImplUnitTest.java</url>
+          <line>53</line>
+          <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/client/PatientClient.java</url>
-          <line>15</line>
-          <option name="timeStamp" value="2" />
+          <url>file://$PROJECT_DIR$/src/test/java/server/ServerImplUnitTest.java</url>
+          <line>59</line>
+          <option name="timeStamp" value="4" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/database/HashMapImpl.java</url>
+          <line>133</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/server/ServerImpl.java</url>
+          <line>174</line>
+          <option name="timeStamp" value="8" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/server/ServerImpl.java</url>
+          <line>176</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/server/ServerImpl.java</url>
+          <line>206</line>
+          <option name="timeStamp" value="10" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/DHMS_3$ServerImplUnitTest_addAppointment_withAppointmentAlreadyExists_shouldBeUnsuccessful.ic" NAME="ServerImplUnitTest.addAppointment_withAppointmentAlreadyExists_shouldBeUnsuccessful Coverage Results" MODIFIED="1710813240551" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false">
+      <FILTER>server.*</FILTER>
+    </SUITE>
   </component>
 </project>
